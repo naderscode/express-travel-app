@@ -1,0 +1,34 @@
+{
+  "name": "expresstravelapp",
+  "version": "1.0.0",
+  "description": "Sample web app ueingJavaScript, node and express.",
+  "main": "travelapp.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naderscode/express-travel-app.git"
+  },
+  "keywords": [
+    "webapp",
+    "express",
+    "node",
+    "REST",
+    "API",
+    "web",
+    "development",
+    "web",
+    "application",
+    "javascript",
+    "mongodb",
+    "templating",
+    "nosql"
+  ],
+  "author": "Nader K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naderscode/express-travel-app/issues"
+  },
+  "homepage": "https://github.com/naderscode/express-travel-app#readme"
+}
