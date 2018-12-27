@@ -12,7 +12,7 @@ app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3000);
 
 //add the statis middleware
-app.use(express.statis(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req,res){
 	res.render('home');
