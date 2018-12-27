@@ -27,7 +27,11 @@ app.get('/', function(req,res){
 
 
 app.get('/about', function(req,res){
-	res.render('about');
+	res.render('about', {
+		//specify page test file the view should be using
+		pageTestScript: '/qa/tests-about.js'
+	});
+
 });
 
 
