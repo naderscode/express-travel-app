@@ -10,14 +10,12 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 
 app.get('/', function(req,res){
-	res.type('text/plain');
-	res.send('Express Travel');
+	res.render('home');
 });
 
 
 app.get('/about', function(req,res){
-	res.type('text/plain');
-	res.send('About Express Travel');
+	res.render('about');
 });
 
 
