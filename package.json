@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/naderscode/express-travel-app#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0"
   }
 }
