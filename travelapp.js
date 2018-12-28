@@ -1,4 +1,5 @@
 var express = require('express');
+var featured = require('./lib/featured.js');
 
 var app = express();
 
@@ -29,7 +30,10 @@ app.get('/', function(req,res){
 
 
 app.get('/about', function(req,res){
-	res.render('about',{pageTestScript: '/qa/tests-about.js'});
+	res.render('about', { 
+		featured: featured.getFeatured(),
+		pageTestScript: '/qa/tests-about.js' 
+	} );
 });
 
 
