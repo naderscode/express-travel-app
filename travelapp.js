@@ -41,8 +41,8 @@ app.get('/tours/river-boat', function(req, res){
 	res.render('tours/river-boat');
 });
 /*
-app.get('/tours/oregon-coast', function(req, res){
-	res.render('tours/oregon-coast');
+app.get('/tours/dunes-coast', function(req, res){
+	res.render('tours/dunes-coast');
 });*/
 app.get('/tours/request-group-rate', function(req, res){
 	res.render('tours/request-group-rate');
