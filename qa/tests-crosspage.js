@@ -9,27 +9,27 @@ suite('Cross-Page-Tests', function(){
 			browser = new Browser();
 		});
 
-		test('requesting a group rate quote from the river-boat tour page should ' +
+		test('requesting a group rate quote from the hood river tour page should ' +
 			'populate the hidden referrer field correctly', function(done){
 		var referrer = 'http://localhost:3000/tours/river-boat';
 		browser.visit(referrer, function(){
 			browser.clickLink('.requestGroupRate', function(){
 				assert(browser.field('referrer').value === referrer);
-					done();
-				});
+				done();
 			});
 		});
+	});
 
-		test('requesting a group rate quote from the dunes-coast tour page should' + 
-					'populate the hidden referrer field correctly', function(done){
-			var referrer = 'http://localhost:3000/tours/dunes-coast';
-			browser.visit(referrer, function(){
-				browser.clickLink('.requestGroupRate', function(){
-					assert(browser.field('referrer').value === referrer);
-						done();
-				});
+		test('requesting a group rate from the oregon coast tour page should ' +
+			'populate the hidden referrer field correctly', function(done){
+		var referrer = 'http://localhost:3000/tours/dunes-coast';
+		browser.visit(referrer, function(){
+			browser.clickLink('.requestGroupRate', function(){
+				assert(browser.field('referrer').value === referrer);
+				done();
 			});
 		});
+	});
 
 		test('visiting the "request group rate" directly should result' + 
 					'in an empty value for the referrer field', function(done){
