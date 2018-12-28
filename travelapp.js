@@ -1,19 +1,24 @@
 var express = require('express');
-var featured = require('./lib/featured.js');
+var fortune = require('./lib/featured.js');
 
 var app = express();
 
 // set up handlebars view engine
-var handlebars = require('express-handlebars')
-	.create({ defaultLayout:'main' });
-
+var handlebars = require('express-handlebars').create({
+    defaultLayout:'main',
+    helpers: {
+        section: function(name, options){
+            if(!this._sections) this._sections = {};
+            this._sections[name] = options.fn(this);
+            return null;
+        }
+    }
+});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-
 app.set('port', process.env.PORT || 3000);
 
-//add the statis middleware
 app.use(express.static(__dirname + '/public'));
 
 // set 'showTests' context property if the querystring contains test=1
@@ -23,43 +28,40 @@ app.use(function(req, res, next){
 	next();
 });
 
-
-app.get('/', function(req,res){
+app.get('/', function(req, res) {
 	res.render('home');
 });
-
-
 app.get('/about', function(req,res){
 	res.render('about', { 
 		featured: featured.getFeatured(),
 		pageTestScript: '/qa/tests-about.js' 
 	});
 });
-
-app.get('/tours/river-boat', function(req,res){
+app.get('/tours/river-boat', function(req, res){
 	res.render('tours/river-boat');
 });
-
-app.get('/tours/request-group-rate', function(req,res){
+/*
+app.get('/tours/oregon-coast', function(req, res){
+	res.render('tours/oregon-coast');
+});*/
+app.get('/tours/request-group-rate', function(req, res){
 	res.render('tours/request-group-rate');
 });
 
-//custom 404 page
-app.use(function(req,res){
-	res.type('text/plain');
+// 404 catch-all handler (middleware)
+app.use(function(req, res, next){
 	res.status(404);
-	res.send('404 - Not Found');
+	res.render('404');
 });
 
-//custrom 500 page
-app.use(function(err,req,res,next){
+// 500 error handler (middleware)
+app.use(function(err, req, res, next){
 	console.error(err.stack);
-	res.type('text/plain');
 	res.status(500);
-	res.send('500 - Server Error');
+	res.render('500');
 });
-
 
 app.listen(app.get('port'), function(){
-	console.log('Express started pn http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+  console.log( 'Express started on http://localhost:' + 
+    app.get('port') + '; press Ctrl-C to terminate.' );
 });
