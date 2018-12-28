@@ -33,9 +33,16 @@ app.get('/about', function(req,res){
 	res.render('about', { 
 		featured: featured.getFeatured(),
 		pageTestScript: '/qa/tests-about.js' 
-	} );
+	});
 });
 
+app.get('/tours/river-boat', function(req,res){
+	res.render('tours/river-boat');
+});
+
+app.get('/tours/request-group-rate', function(req,res){
+	res.render('tours/request-group-rate');
+});
 
 //custom 404 page
 app.use(function(req,res){
