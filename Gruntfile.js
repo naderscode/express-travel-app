@@ -8,6 +8,23 @@ module.exports = function(grunt){
 		grunt.loadNpmTasks(task)
 	});
 
-
+	//configure plugins
+	grunt.initConfig({
+	    cafemocha: {
+	        all: {src: 'qa/tests-*.js', options: {ui: 'tdd'}}
+	    },
+	    jshint: {
+	        app: ['travelapp.js', 'public/js/**/*.js', 'lib/**/*.js'],
+	        qa: ['Gruntfile.js', 'public/qa/**/*.js', 'qa/**/*.js'],
+	    },
+	    linkChecker: {
+	        dev: {
+	            site: 'localhost',
+	            options: {
+	                initialPort: 3000
+	            }
+	        }
+	    },
+});
 
 };
