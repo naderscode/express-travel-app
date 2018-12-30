@@ -9,7 +9,7 @@ suite('Cross-Page-Tests', function(){
 			browser = new Browser();
 		});
 
-		test('requesting a group rate quote from the hood river tour page should ' +
+		test('requesting a group rate quote from the river-boat tour page should ' +
 			'populate the hidden referrer field correctly', function(done){
 		var referrer = 'http://localhost:3000/tours/river-boat';
 		browser.visit(referrer, function(){
