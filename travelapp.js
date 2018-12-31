@@ -15,7 +15,7 @@ var handlebars = require('express-handlebars').create({
             return null;
         }
     }
-});
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
