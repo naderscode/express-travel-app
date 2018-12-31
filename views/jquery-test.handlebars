@@ -1,1 +1,16 @@
-jquery-test.handlebars
+{{#section 'head'}}
+	<!-- do not index-->
+	<meta name='robots' content='noindex'>
+{{/section}}
+
+<h1>Test Page</h1>
+<p>Testing some jQuery code</p>
+
+
+{{#section 'jquery'}}
+	<script>
+		$('document').ready(function(){
+			$('h1').html('jQuery works');
+		});
+	</script>
+{{/section}}
