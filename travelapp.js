@@ -1,7 +1,7 @@
 "use strict";
 
 var express = require('express');
-var fortune = require('./lib/featured.js');
+var featured = require('./lib/featured.js');
 
 var app = express();
 
@@ -70,12 +70,16 @@ app.use(function(req, res, next){
 app.get('/', function(req, res) {
 	res.render('home');
 });
+
 app.get('/about', function(req,res){
-	res.render('about', { 
+	res.render('about',
+	 { 
 		featured: featured.getFeatured(),
 		pageTestScript: '/qa/tests-about.js' 
-	});
+
+	} );
 });
+
 app.get('/tours/river-boat', function(req, res){
 	res.render('tours/river-boat');
 });
@@ -85,6 +89,9 @@ app.get('/tours/dunes-coast', function(req, res){
 });
 app.get('/tours/request-group-rate', function(req, res){
 	res.render('tours/request-group-rate');
+});
+app.get('/jquery-test', function(req, res){
+	res.render('jquery-test');
 });
 
 // 404 catch-all handler (middleware)
