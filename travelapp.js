@@ -33,38 +33,37 @@ app.use(function(req, res, next){
 //Mock weather data
 function getWeatherData(){
 	return {
+		locations: [
+				{
+					name: 'Paris',
+					forecastUrl: 'https://www.wunderground.com/weather/fr/paris',
+					iconUrl: 'https://icons.wxug.com/i/c/v4/26.svg',
+					weather: 'Cloudy',
+					temp: '48F (10 C)',
+				},
+				{
+					name: 'London',
+					forecastUrl: 'https://www.wunderground.com/weather/gb/london',
+					iconUrl: 'https://icons.wxug.com/i/c/v4/27.svg',
+					weather: 'Mostly Cloudy',
+					temp: '50 F (12 C)',	
+				},
+				{
+					name: 'New York',
+					forecastUrl: 'https://www.wunderground.com/weather/us/ny/new-york-city',
+					iconUrl: 'https://icons.wxug.com/i/c/v4/27.svg',
+					weather: 'Mostly Cloudy',
+					temp: '40 F (5 C)',
+				},
 
-		[
-			{
-				name: 'Paris',
-				forecastUrl: 'https://www.wunderground.com/weather/fr/paris',
-				iconUrl: 'https://icons.wxug.com/i/c/v4/26.svg',
-				Weather: 'Cloudy',
-				Temp: '48F (10 C)',
-			},
-			{
-				name: 'London',
-				forecastUrl: 'https://www.wunderground.com/weather/gb/london',
-				iconUrl: 'https://icons.wxug.com/i/c/v4/27.svg',
-				Weather: 'Mostly Cloudy',
-				Temp: '50 F (12 C)',	
-			},
-			{
-				name: 'New York',
-				forecastUrl: 'https://www.wunderground.com/weather/us/ny/new-york-city',
-				iconUrl: 'https://icons.wxug.com/i/c/v4/27.svg',
-				Weather: 'Mostly Cloudy',
-				Temp: '40 F (5 C)',
-			},
-
-		],
+			],
 
 	};
 }
-
-app.get(function(req, res, next){
-	if(!res.local.partials) res.locals.partials = {};
-	res.locals.partials.getWeatherData();
+// middleware to add weather data to context
+app.use(function(req, res, next){
+	if(!res.locals.partials) res.locals.partials = {};
+	res.locals.partials.weatherContext = getWeatherData();
 	next();
 });
 
