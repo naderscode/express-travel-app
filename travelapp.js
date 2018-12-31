@@ -30,6 +30,44 @@ app.use(function(req, res, next){
 	next();
 });
 
+//Mock weather data
+function getWeatherData(){
+	return {
+
+		[
+			{
+				name: 'Paris',
+				forecastUrl: 'https://www.wunderground.com/weather/fr/paris',
+				iconUrl: 'https://icons.wxug.com/i/c/v4/26.svg',
+				Weather: 'Cloudy',
+				Temp: '48F (10 C)',
+			},
+			{
+				name: 'London',
+				forecastUrl: 'https://www.wunderground.com/weather/gb/london',
+				iconUrl: 'https://icons.wxug.com/i/c/v4/27.svg',
+				Weather: 'Mostly Cloudy',
+				Temp: '50 F (12 C)',	
+			},
+			{
+				name: 'New York',
+				forecastUrl: 'https://www.wunderground.com/weather/us/ny/new-york-city',
+				iconUrl: 'https://icons.wxug.com/i/c/v4/27.svg',
+				Weather: 'Mostly Cloudy',
+				Temp: '40 F (5 C)',
+			},
+
+		],
+
+	};
+}
+
+app.get(function(req, res, next){
+	if(!res.local.partials) res.locals.partials = {};
+	res.locals.partials.getWeatherData();
+	next();
+});
+
 app.get('/', function(req, res) {
 	res.render('home');
 });
